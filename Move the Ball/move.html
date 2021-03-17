@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Move Ball</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="move.css" />
+  </head>
+  <body>
+    <div class="ball"></div>
+<script>
+var ball = document.getElementsByClassName("ball");
+var movingLeft = 0;
+var movingTop = 0;
+var key, type, e;
+var e = "PRESSED";
+
+ball[0].style.top = ball[0].offsetTop + "px";
+ball[0].style.left = ball[0].offsetLeft + "px";
+
+var ballHeight = ball[0].offsetHeight;
+var ballWidth = ball[0].offsetWidth;
+
+window.onresize = function (e) {
+  ballHeight = ball[0].offsetHeight;
+  ballWidth = ball[0].offsetWidth;
+};
+
+$(document).on("keypress", function (event) {
+  event.preventDefault();
+  key = event.keyCode;
+  movingLeft = parseInt(ball[0].style.left);
+  movingTop = parseInt(ball[0].style.top);
+  //A
+  if (key === 97 || key === 65) {
+    type = "LEFT";
+    if (movingLeft > 5) {
+      movingLeft -= 5;
+      ball[0].style.left = movingLeft + "px";
+    }
+  }
+  //D
+  else if (key === 100 || key === 68) {
+    type = "RIGHT";
+    var rightWidth = window.innerWidth - ballWidth - 5;
+    if (movingLeft < rightWidth) {
+      movingLeft += 5;
+      ball[0].style.left = movingLeft + "px";
+    }
+  }
+  //S
+  else if (key === 115 || key === 83) {
+    type = "DOWN";
+    var bottomHeight = window.innerHeight - ballHeight - 5;
+    if (movingTop < bottomHeight) {
+      movingTop += 5;
+      ball[0].style.top = movingTop + "px";
+    }
+  }
+  //W
+  else if (key === 119 || key === 87) {
+    type = "UP";
+    if (movingTop > 5) {
+      movingTop -= 5;
+      ball[0].style.top = movingTop + "px";
+    }
+  }
+});
+</script>
+  </body>
+</html>
