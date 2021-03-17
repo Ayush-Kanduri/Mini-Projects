@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Up Counter</title>
+<script src="singledigitcounter.js"></script>
+<link rel="stylesheet" href="singledigitcounter.css">
+  </head>
+  <body>
+    <header>
+      <h1>Enter Value From 1 to 9</h1>
+      <div>
+        <input
+          type="number"
+          id="number"
+          name="number"
+          max="9"
+          min="1"
+          placeholder="Enter the number"
+          required
+        />
+        <button id="btn" onclick="startCounter()">Start Counter</button>
+      </div>
+    </header>
+    <div id="counter">
+      <div id="display">
+        <p class="current">0</p>
+        <p class="next"></p>
+      </div>
+    </div>
+  </body>
+</html>
